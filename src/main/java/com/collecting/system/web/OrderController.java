@@ -55,7 +55,7 @@ public class OrderController {
 
         if (secret.equals(secretHeader)) {
             orderService.deleteOrderById(id);
-            return new ResponseEntity<>("Order with id '" + id + "' was deleted.", HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
         return respondNotAuthorized("delete");
