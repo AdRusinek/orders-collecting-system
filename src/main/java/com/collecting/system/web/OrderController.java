@@ -1,6 +1,7 @@
 package com.collecting.system.web;
 
 import com.collecting.system.dto.OrderDto;
+import com.collecting.system.services.ErrorService;
 import com.collecting.system.services.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +21,7 @@ import javax.validation.Valid;
 public class OrderController {
 
     private final OrderService orderService;
+    private final ErrorService errorService;
     @Value("${secret-header}")
     private String secretHeader;
 
@@ -37,7 +39,7 @@ public class OrderController {
     @PostMapping
     public ResponseEntity<?> placeOrder(@Valid @RequestBody OrderDto orderDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            //todo validate errors
+            return errorService.validateErrors(bindingResult);
         }
 
         return new ResponseEntity<>(orderService.placeOrder(orderDto), HttpStatus.CREATED);
@@ -58,7 +60,7 @@ public class OrderController {
     public ResponseEntity<?> updateOrder(@Valid @RequestBody OrderDto orderDto, @PathVariable Long id, BindingResult bindingResult,
                                          @RequestHeader(name = "secret") String secret) {
         if (bindingResult.hasErrors()) {
-            //todo validate errors
+            return errorService.validateErrors(bindingResult);
         }
 
         if (secret.equals(secretHeader)) {
