@@ -6,7 +6,6 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-
 /**
  * Created by Adrian Rusinek on 24.07.2020
  **/

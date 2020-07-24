@@ -9,13 +9,13 @@ import java.util.List;
  **/
 public interface OrderService {
 
-    OrderDto placeOrder(OrderDto orderDto);
-
     void deleteOrderById(Long id);
 
     OrderDto getOrderById(Long id);
 
-    List<OrderDto> listOrders(Boolean showRealTimeOrders);
+    OrderDto placeOrder(OrderDto orderDto);
 
     OrderDto updateOrder(Long id, OrderDto orderDto);
+
+    List<OrderDto> listOrders(Boolean showRealTimeOrders);
 }

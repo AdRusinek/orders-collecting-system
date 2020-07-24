@@ -22,6 +22,7 @@ public class OrderController {
 
     private final OrderService orderService;
     private final ErrorService errorService;
+
     @Value("${secret-header}")
     private String secretHeader;
 

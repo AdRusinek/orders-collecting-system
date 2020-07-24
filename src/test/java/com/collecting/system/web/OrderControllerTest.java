@@ -27,6 +27,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class OrderControllerTest {
 
     private final String API_V1_ORDERS = "/api/v1/orders/";
+
+    @Value("${secret-header}")
+    private String secretHeader;
+
     @Autowired
     ObjectMapper objectMapper;
 
@@ -35,10 +39,9 @@ class OrderControllerTest {
 
     @Autowired
     OrderMapper orderMapper;
+
     @Autowired
     private MockMvc mockMvc;
-    @Value("${secret-header}")
-    private String secretHeader;
 
     @Test
     void updateOrderReturnsBadRequestDueToMissingOrderName() throws Exception {

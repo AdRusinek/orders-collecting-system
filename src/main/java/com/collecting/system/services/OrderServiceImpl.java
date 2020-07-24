@@ -21,8 +21,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
-    private final OrderRepository orderRepository;
     private final OrderMapper orderMapper;
+    private final OrderRepository orderRepository;
 
     @Override
     public OrderDto placeOrder(OrderDto orderDto) {
