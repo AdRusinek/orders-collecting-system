@@ -48,7 +48,7 @@ class OrderControllerTest {
         Order savedOrder = createAndSaveOrder();
         savedOrder.setOrderName(null);
 
-        mockMvc.perform(put(API_V1_ORDERS + savedOrder.getId())
+        mockMvc.perform(patch(API_V1_ORDERS + savedOrder.getId())
                 .contentType("application/json")
                 .header("secret", secretHeader)
                 .content(objectMapper.writeValueAsString(savedOrder)))
@@ -62,7 +62,7 @@ class OrderControllerTest {
 
         savedOrder.setId(null);
 
-        mockMvc.perform(put(API_V1_ORDERS + savedOrderId)
+        mockMvc.perform(patch(API_V1_ORDERS + savedOrderId)
                 .contentType("application/json")
                 .header("secret", "wrong")
                 .content(objectMapper.writeValueAsString(savedOrder)))
@@ -77,7 +77,7 @@ class OrderControllerTest {
         savedOrder.setId(null);
         savedOrder.setOrderName("water");
 
-        mockMvc.perform(put(API_V1_ORDERS + savedOrderId)
+        mockMvc.perform(patch(API_V1_ORDERS + savedOrderId)
                 .contentType("application/json")
                 .header("secret", secretHeader)
                 .content(objectMapper.writeValueAsString(savedOrder)))

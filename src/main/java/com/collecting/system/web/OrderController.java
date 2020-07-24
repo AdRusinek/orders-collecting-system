@@ -61,8 +61,8 @@ public class OrderController {
         return respondNotAuthorized("delete");
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> updateOrder(@Valid @RequestBody OrderDto orderDto, @PathVariable Long id, BindingResult bindingResult,
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> updateOrder(@Valid @RequestBody OrderDto orderDto, BindingResult bindingResult, @PathVariable Long id,
                                          @RequestHeader(name = "secret") String secret) {
         if (bindingResult.hasErrors()) {
             return errorService.validateErrors(bindingResult);
