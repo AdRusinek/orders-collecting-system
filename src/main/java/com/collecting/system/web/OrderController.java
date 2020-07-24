@@ -26,9 +26,13 @@ public class OrderController {
     private String secretHeader;
 
     @GetMapping
-    public ResponseEntity<?> listOrders() {
+    public ResponseEntity<?> listOrders(@RequestParam(value = "showRealTimeOrders", required = false) Boolean showRealTimeOrders) {
 
-        return new ResponseEntity<>(orderService.listOrders(null), HttpStatus.OK);
+        if (showRealTimeOrders == null) {
+            showRealTimeOrders = false;
+        }
+
+        return new ResponseEntity<>(orderService.listOrders(showRealTimeOrders), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

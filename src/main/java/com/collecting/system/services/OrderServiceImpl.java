@@ -7,6 +7,7 @@ import com.collecting.system.repositories.OrderRepository;
 import com.collecting.system.web.mappers.OrderMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,6 +45,7 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.orderToOrderDto(findAndValidate(id));
     }
 
+    @Cacheable(cacheNames = "orderListCache", condition = "#showRealTimeOrders == false ")
     @Override
     public List<OrderDto> listOrders(Boolean showRealTimeOrders) {
         log.info("Getting all orders.");
