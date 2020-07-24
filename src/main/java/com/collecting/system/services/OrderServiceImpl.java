@@ -2,6 +2,7 @@ package com.collecting.system.services;
 
 import com.collecting.system.domain.Order;
 import com.collecting.system.dto.OrderDto;
+import com.collecting.system.exceptions.OrderIdException;
 import com.collecting.system.repositories.OrderRepository;
 import com.collecting.system.web.mappers.OrderMapper;
 import lombok.RequiredArgsConstructor;
@@ -65,7 +66,7 @@ public class OrderServiceImpl implements OrderService {
         Optional<Order> optionalOrder = orderRepository.findById(id);
 
         if (!optionalOrder.isPresent()) {
-            //todo throw exception
+            throw new OrderIdException("Order with id '" + id + "' does not exist.");
         }
 
         return optionalOrder.get();
