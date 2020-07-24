@@ -1,2 +1,16 @@
-com\collecting\system\domain\Order.class
+com\collecting\system\services\OrderService.class
+com\collecting\system\web\mappers\OrderMapperImpl.class
+com\collecting\system\exceptions\OrderIdExceptionResponse.class
+com\collecting\system\web\OrderController.class
+com\collecting\system\config\CacheConfig.class
+com\collecting\system\config\SwaggerConfig.class
+com\collecting\system\dto\OrderDto.class
+com\collecting\system\services\ErrorService.class
 com\collecting\system\OrderCollectorApplication.class
+com\collecting\system\repositories\OrderRepository.class
+com\collecting\system\web\mappers\OrderMapper.class
+com\collecting\system\exceptions\OrderIdException.class
+com\collecting\system\services\OrderServiceImpl.class
+com\collecting\system\domain\Order.class
+com\collecting\system\exceptions\CustomResponseEntityExceptionHandler.class
+com\collecting\system\dto\OrderDto$OrderDtoBuilder.class
